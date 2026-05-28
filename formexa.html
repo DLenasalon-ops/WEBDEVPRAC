@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang = "en">
+    <head>
+<title>Form Example</title>
+<meta name="description" content = "I am creating a form">
+<meta char ="utf-8">
+<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+<link rel = "stylesheet" type = "text/css" href = "style.css">
+    </head>
+    <body>
+    <form action="contactform.php" method="post">
+        <input type="text" name = "First_Name" placeholder="Write your first name...">
+         <input type="text" name = "First_Name" value="Write your first name...">
+        Option 1<input type="radio" name = "gender" value="male"" checked>
+        Option 2<input type="radio" name = "gender" value="female"">
+        Option 3<input type="radio" name = "gender" value="other"">
+        <input type = "password" name="pwd" placeholder=" password...">
+        <textarea name="Message" placeholder=" write your message here..."></textarea>
+        <select name = "car">
+            <option value="">--Please choose an option--</option>
+            <option value=" car1"> ford</option>
+            <option value="car2"> toyota</option>
+            <option value="car3"> honda</option>
+        </select>
+        <button type="submit" name = "Submit">Submit</button>
+    </form>
+
+    </body>
+    
+
+    </html>

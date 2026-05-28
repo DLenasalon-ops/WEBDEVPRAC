@@ -1,0 +1,113 @@
+table{
+  width: 400px;
+  
+    
+}
+th{
+    text-align: left;
+
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px;
+}
+caption{
+    text-align: left;
+}
+.navbar{
+    background: crimson; 
+    font-family:calibri;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+li a{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+.btn{
+    background-color: grey;
+    padding:10px 15px;
+    border-radius:10px;
+    width: 90px;
+}
+.btn a{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+li a:hover{
+    color: yellow;
+}
+.btn:hover{
+    background-color: gray;
+}
+button{
+    background-color: grey;
+    margin-left: 10px;
+    border-radius:10px;
+    padding: 10px;
+    width: 90px;
+}
+button a{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+form{
+    width: 300px;
+
+}
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+textarea{
+    resize: vertical;
+    max-height: 100px;
+    padding: 10px;
+
+}
+#firstName{
+    width: 100%;
+    
+}
+#lastName{
+    width: 70%;
+    
+}
+#gender{
+    width: 50%;
+    
+}
+tr{
+    height: 100px;
+
+}
+input, textarea{
+    outline: none;
+    border: 1px solid #ccc;
+
+}
+input:focus, textarea:focus{
+    box-shadow: 0 0 5px rgba(255,0,0,0.5);
+    border: 1.0 px solid #ccc;
+    
+}
+<!-- padding is used to create some distance from the text to the border of the cell.
