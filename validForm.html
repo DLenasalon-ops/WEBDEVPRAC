@@ -5,18 +5,72 @@
         <meta name ="viewport" content = "width = device-width, initial-scale=1.0">
         <title> document</title>
         <style>
+            .registration-form{
+                width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid white;
+                border-radius: 5px;
+
+            }
+            .field{
+                margin-bottom: 15px;
+
+            }
+            input, button{
+                width: 100%;
+                padding: 10px;
+                border: 2px solid #ccc;
+                font-size: 2;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+
+            }
             .error{
                 color: red;
                 margin:0;
             }
+            .success{
+                color: green;
+                margin:0;
+            }
+
         </style>
     </head>
     <body>
-        <a href = "#" onclick = "document.getElementById('showConten').textContent= 'Invalid Email'">Show Content</a>
+        <form action = "" method="registrationForm" class="registration-form">
+            <h2>Registration Form</h2>
+            <div class= "field">
+                <label for = "fullname"> Full Name: </label><br>
+                <input type="text" id = "fullname" name="fullname"><br>
+                <p id="Fullname-error" class = "error"></p>
+            </div>
+            <div class = "field">
+                <label for ="Email"> Email Address: </label><br>
+                <input type="email" id = "email" name = "email"><br>
+                <p id = "Email-error" class = "error"></p>
+            </div>
+            <div class = "field">
+                <label for = "phoneNo"> Tel Number</label><br>
+                <input type ="phone" id = "phoneNo" name = "phoneNo"><br>
+                <p id = "PhoneNo-error" class = "error"></p>
+            </div> 
+            <p id ="ValidationMessage" class = "success"></p>
+        <div clas="button">
+            <label for = "Submit">Submit</label>
+        </div>
+        </form>
+        <!--<a href = "#" onclick = "document.getElementById('showConten').textContent= 'Invalid Email'">Show Content</a>
         <a href="#" onclick="document.getElementById('showconten').textContent=''">Hide Content</a>
-        <p id="showConten" class = "error"></p>
-        
-
+        <p id="showConten" class = "error"></p> -->  
+<script 
+document.getElementById("registrationForm").addEventListener("submit", funtion(event){
+    event.preventDefault();
+    document.getElementById("Fullname-error").textContent ='';
+    document.getElementById("PhoneNo-error").textContent = '';
+    document.getElementById("Email-error").textContent = '';
+    document.getElementById("ValidationMessage")
+})
     </body>
 
 </html>
