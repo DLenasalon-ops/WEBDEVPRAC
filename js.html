@@ -1,15 +1,224 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = "utf-8">
-        <title> JavaScript Practice</title>
-        <meta name = "description" content = "I am practicing JavaScript.">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-        <link rel = "stylesheet" type = "text/css" href = "style.css">
-    </head>
-    <body onload = "startTime()">
-        <h1 id="greeting"></h1>
-        <p id="date"></p>
-        <p id="DateTime"></p>
-        <script src="script.js"></script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/script.js"></script>
+</head>
+<body onload="startTime()">
+    <p id="demo"></p>
+    
+    <script>
+        document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    </script>
+    <br>
+    <script>
+        document.write(7 + 5);
+    </script>
+<br>
+
+    <button type="button" onclick="document.getElementById('bulb').src='images/bulb_on.webp'">Turn on</button>
+    
+    <img id="bulb" src="images/bulb_off.webp" alt="" style="width: 300px;">
+    
+    <button type="button" onclick="document.getElementById('bulb').src='images/bulb_off.webp'">Turn off</button>
+
+<br>
+
+<script>
+    // window.alert("The database connection was successful!");
+</script>
+<br>
+<a href="#" onclick="return confirm('Are you sure you want to delete Alex from the database?')">[ Delete ]</a>
+<br>
+
+<script>
+    console.log(5+7);
+</script>
+<br>
+
+<script>
+    let x = 5;
+    let y = 7;
+    let z = x + y;
+    document.write("The sum is : " + z);
+
+    var fullname = "Alex Okama";
+    let age = 30;
+    document.write("<br>My name is " + fullname + " and I am " + age + " years old.");
+
+    let score = 85; // score is initialized to 85
+    score += 10; // score = score + 10
+    document.write("<br>My new score is: " + score);
+
+
+    const marks = 29; // marks is a constant and cannot be reassigned
+    // marks += 1; // This will cause an error because marks is a constant
+    document.write("<br>My marks are: " + marks);
+
+    // Arrays
+    let fruits = ["Apple", "Banana", "Cherry", 46];
+    document.write("<br>My favorite fruits are: " + fruits.join(", "));
+
+    //conditions
+// let food = prompt("Enter a food item:");
+
+// if (fruits.includes(food)) {
+//     document.write("<br>" + food + " is in the fruits array.");
+// } else {
+//     document.write("<br>" + food + " is not in the fruits array.");
+// }   
+
+
+// Calling the function and displaying the result
+var message = greetings("Alex Okama");
+document.write("<br>" + message);
+
+</script>
+
+<br>
+
+<p id="date"></p>
+<p id="time"></p>
+<p id="DateTime"></p>
+<br>
+<script>
+    var colors = ["Red", "Green", "Blue", "Yellow"];
+    document.write(colors[0] + "<br>"); // Output: Red
+    document.write(colors[1] + "<br>"); // Output: Green
+    var usersDetails = {
+        "Director":
+            {
+                "name": ["Alex", "Okama"], 
+                "age": 30, 
+                "email": {
+                    "Home Email": "alex.okama@example.com",
+                    "Work Email": "alex.okama@work.com"
+                }
+            },
+bio: function() {
+    return "My name is " + this.Director.name.join(" ") + " and I am " + this.Director.age + " years old. I am the Director of the company. My home email is " + this.Director.email["Home Email"] + " and my work email is " + this.Director.email["Work Email"] + ".";
+},
+
+        "Manager":
+            {
+                "name": ["Ann", "Okama"], 
+                "age": 35, 
+                "email": {
+                    "Home Email": "ann.okama@example.com",
+                    "Work Email": "ann.okama@work.com"
+                }
+            },
+        "Secretary":
+            {
+                "name": ["Dennis", "Otema"], 
+                "age": 28, 
+                "email": {
+                    "Home Email": "dennis.otema@example.com",
+                    "Work Email": "dennis.otema@work.com"
+                }
+            },
+        "Average age": function() {
+            return (this.Director.age + this.Manager.age + this.Secretary.age) / 3;
+        }
+    };
+document.write(usersDetails.Director.name.join(" ") + "<br>"); // Output: Alex Okama
+document.write(usersDetails.Manager.age + "<br>"); // Output: 35
+document.write(usersDetails.Secretary.email["Work Email"] + "<br>"); // Output: dennis.otema@work.com
+document.write("The average age is: " + usersDetails["Average age"]() + "<br>"); // Output: The average age is: 31
+document.write("<br>" + usersDetails.bio());
+</script>
+<br>
+<br>
+<script>
+// Loops
+// Number of iterations to be performed as long as the condition is true
+// While loop
+document.write("<h4>While Loop</h4>");
+let i = 7; // Initialize the loop variable
+while (i <= 13) { // Loop condition: continue as long as i is less than or equal to 13
+    document.write(i + "<br>"); // Output the current value of i followed by a line break
+    i+=2; // Increment the loop variable by 2
+}
+// Do-while loop
+document.write("<h4>Do-While Loop</h4>");
+let j = 5; // Initialize the loop variable
+do {
+    // if (j == 9){ continue; } // Skip the iteration when j is 9
+    document.write(j + "<br>"); // Output the current value of j followed by a line break
+    j++; // Increment the loop variable by 2
+} while (j <= 13); // Loop condition: continue as long as j is less than or equal to 13
+
+// For loop
+document.write("<h4>For Loop</h4>");
+for (let k = 12; k <= 23; k+=2) {
+    document.write(k + "<br>"); // Output the current value of k followed by a line break
+}
+
+// for-of loop
+document.write("<h4>For-Of Loop</h4>");
+let languages = ["C++", "Python", "Java", "JavaScript", "HTML"]; // Initialize an array of programming languages
+for (let language of languages) {
+    document.write(language + "<br>"); // Output the current language followed by a line break
+}
+
+// for-in loop
+document.write("<h4>For-In Loop</h4>");
+let user = {
+    name: "Alex Okama",
+    age: 30,
+    email: "alex.okama@example.com"
+};
+
+for (let detail in user) {
+    document.write(detail + ": " + user[detail] + "<br>"); // Output the key and value followed by a line break
+}
+
+
+</script>
+<br>
+<script>
+let TimeDate = new Date();
+
+</script>
+<h4>Registration Date</h4>
+<select name="" id="">
+    <script>
+            document.write("<option value=''>"+ TimeDate.getDate() +"</option>");
+        for (let day = 1; day <= daysInMonth(TimeDate); day++) {
+            if (day === TimeDate.getDate()) {
+                continue; // Skip the current day
+            }
+            document.write("<option value='" + day + "'>" + day + "</option>");
+        }
+    </script>
+</select>
+<select name="" id="">
+    <script>
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        document.write("<option value=''>" + months[TimeDate.getMonth()] + "</option>");
+        for (let month of months) {
+            if (month === months[TimeDate.getMonth()]) {
+                continue; // Skip the current month
+            }
+            document.write("<option value='" + month + "'>" + month + "</option>");
+        }
+    </script>
+</select>
+<select name="" id="">
+    <script>
+        document.write("<option value=''>" + TimeDate.getFullYear() + "</option>");
+        let minYear = TimeDate.getFullYear() - 50; // Set minimum year to 50 years ago
+        for (let year = TimeDate.getFullYear(); year >= minYear; year--) {
+            if (year === TimeDate.getFullYear()) {
+                continue; // Skip the current year
+            }
+            document.write("<option value='" + year + "'>" + year + "</option>");
+        }
+    </script>
+</select>
+<br>
+<br>
+</body>
+</html>
