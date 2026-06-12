@@ -64,3 +64,135 @@ function daysInMonth(TimeDate) {
     }
     return daysInMonth; // Return the number of days in the current month
 }
+function formValidations() {
+    // JavaScript code to validate the form
+    document.getElementById("registrationForm").addEventListener("submit", function(event){
+        event.preventDefault(); // Prevent the default form submission
+
+        // Clear previous error messages
+        document.getElementById("fullnameError").textContent = '';
+        document.getElementById("emailError").textContent = '';
+        document.getElementById("phoneError").textContent = '';
+        document.getElementById("passwordError").textContent = '';
+        document.getElementById("confirmPasswordError").textContent = '';
+        document.getElementById("dateError").textContent = '';
+        document.getElementById("validationMessage").textContent = '';
+
+        // Flag to track if the form is valid
+        let isValid = true;
+
+        // Validate Full Name
+        const fullname = document.getElementById("fullname").value.trim();
+        if(fullname === ''){
+            document.getElementById("fullnameError").textContent = 'Full Name is required.';
+            isValid = false;
+        }else if(fullname.length < 3){
+            document.getElementById("fullnameError").textContent = 'Full Name must be at least 3 characters long.';
+            isValid = false;
+        }else if(!/^[a-zA-Z\s']+$/.test(fullname)){
+            document.getElementById("fullnameError").textContent = 'Full Name can only contain letters, spaces, and apostrophes.';
+            isValid = false;
+        }
+
+        // Validate Email
+        const email = document.getElementById("email").value.trim();
+        const validDomains = ['gmail.com', 'yahoo.com', 'strathmore.edu', 'o365.strathmore.edu'];
+        const invalidDomains = ['hotmail.com', 'outlook.com', 'aol.com'];
+        const emailDomain = email.split('@')[1];
+
+        if(email === ''){
+            document.getElementById("emailError").textContent = 'Email is required.';
+            isValid = false;
+        }else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+            document.getElementById("emailError").textContent = 'Please enter a valid email address.';
+            isValid = false;
+        }else if(!validDomains.includes(emailDomain)){
+            document.getElementById("emailError").textContent = 'Email domain must be one of the following: ' + validDomains.join(', ') + '.';
+            isValid = false;
+        }else if(invalidDomains.includes(emailDomain)){
+            document.getElementById("emailError").textContent = 'Email domain ' + emailDomain + ' is not allowed.';
+            isValid = false;
+        }
+
+        // Validate Phone Number
+        const phone = document.getElementById("phone").value.trim();
+        const validPhonePattern = /^\+?\d{10,15}$/;
+        if(phone === ''){
+            document.getElementById("phoneError").textContent = 'Phone Number is required.';
+            isValid = false;
+        }else if(!validPhonePattern.test(phone)){
+            document.getElementById("phoneError").textContent = 'Phone Number must be between 10 and 15 digits.';
+            isValid = false;
+        }
+
+        // Password validation
+        const password = document.getElementById("password").value.trim();
+        if(password === ''){
+            document.getElementById("passwordError").textContent = 'Password is required.';
+            isValid = false;
+        }else if(password.length < 6){
+            document.getElementById("passwordError").textContent = 'Password must be at least 6 characters long.';
+            isValid = false;
+        }else if(!/[A-Z]/.test(password)){
+            document.getElementById("passwordError").textContent = 'Password must contain at least one uppercase letter.';
+            isValid = false;
+        }else if(!/[a-z]/.test(password)){
+            document.getElementById("passwordError").textContent = 'Password must contain at least one lowercase letter.';
+            isValid = false;
+        }else if(!/[0-9]/.test(password)){
+            document.getElementById("passwordError").textContent = 'Password must contain at least one digit.';
+            isValid = false;
+        }else if(!/[!@#$%^&*(),.?":{}|+\-<>]/.test(password)){
+            document.getElementById("passwordError").textContent = 'Password must contain at least one special character.';
+            isValid = false;
+        }
+
+        // Confirm Password validation
+        const confirmPassword = document.getElementById("confirm_password").value.trim();
+        if(confirmPassword === ''){
+            document.getElementById("confirmPasswordError").textContent = 'Please confirm your password.';
+            isValid = false;
+        }else if(confirmPassword !== password){
+            document.getElementById("confirmPasswordError").textContent = 'Passwords do not match.';
+            isValid = false;
+        }
+
+        // Date validation
+         const dateValue = document.getElementById("date").value;
+        const selectedDate = new Date(dateValue);
+        const minDate = new Date("2025-01-01"); // earliest allowed
+        const maxDate = new Date("2026-06-12");
+        const maxYear = maxDate.getFullYear(); // latest allowed year
+        const today = new Date();
+        const todayString = today.toISOString().split('T')[0];
+
+    // Set max attribute dynamically to today if year is 2026
+        document.getElementById("date").setAttribute("max", todayString);
+        document.getElementById("date").setAttribute("min", "2025-01-01");
+
+    // Year length check
+        const yearPart = dateValue.split("-")[0];
+        if(yearPart.length !== 4){
+        document.getElementById("dateError").textContent = "Year must be 4 digits only.";
+        isValid = false;
+    }
+
+    // Range check: year must be <= 2026 and >= 2025
+        if(selectedDate.getFullYear() > maxYear || selectedDate < minDate){
+        document.getElementById("dateError").textContent =
+            "Date must be between Jan 1, 2025 and Dec 31, 2026.";
+        isValid = false;
+    }
+
+        // Final validation message
+        if(isValid){
+            document.getElementById("validationMessage").textContent = 'Form submitted successfully!';
+            document.getElementById("validationMessage").classList.remove('error');
+            document.getElementById("validationMessage").classList.add('success');
+        }else{
+            document.getElementById("validationMessage").textContent = 'Please correct the error(s) above and try again.';
+            document.getElementById("validationMessage").classList.remove('success');
+            document.getElementById("validationMessage").classList.add('error');
+        }
+    });
+}
